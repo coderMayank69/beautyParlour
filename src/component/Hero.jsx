@@ -4,7 +4,7 @@ const Hero = () => {
   return (
     <div
       className="relative flex flex-col items-start justify-center
-      bg-[url('/src/assets/background.png')] bg-no-repeat bg-cover bg-top
+      bg-[url('/assets/background.png')] bg-no-repeat bg-cover bg-top
       min-h-screen overflow-hidden"
     >
       {/* Gradient Overlays */}
