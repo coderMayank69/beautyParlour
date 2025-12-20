@@ -16,7 +16,7 @@ const About = () => {
                     <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-purple-500/30">
                         <img 
                             className="w-full h-[400px] md:h-[500px] object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                            src="/src/assets/about.jpg"
+                            src="/assets/about.jpg"
                             alt="About XYZ Beauty Parlour" 
                         />
                         {/* Overlay Gradient */}

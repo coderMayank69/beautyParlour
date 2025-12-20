@@ -83,7 +83,7 @@ const Hero = () => {
               blur-2xl group-hover:opacity-50 transition-opacity duration-700" />
             
             <img
-              src="/src/assets/hero.png"
+              src="/assets/hero.png"
               alt="Beauty Salon Experience"
               className="relative w-full max-w-none md:max-w-lg lg:max-w-xl xl:max-w-2xl object-contain 
                 transition-transform duration-700 ease-out group-hover:scale-105 drop-shadow-2xl"

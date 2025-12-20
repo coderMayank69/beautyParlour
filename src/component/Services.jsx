@@ -2,12 +2,12 @@ import React from 'react'
 import Title from './Title.jsx'
 
 const items = [
-  { id: 1, title: "Bridal Makeup", img: "/src/assets/bridal.jpg" },
-  { id: 2, title: "Party & Occasion Makeup", img: "/src/assets/ocassional.png" },
-  { id: 3, title: "Hair Styling & Hair Spa", img: "/src/assets/hair.jpg" },
-  { id: 4, title: "Manicure & Pedicure", img: "/src/assets/manicure.jpg" },
-  { id: 5, title: "Skincare & Facials", img: "/src/assets/skincare.png" },
-  { id: 6, title: "Waxing & Threading", img: "/src/assets/threading.jpg" },
+  { id: 1, title: "Bridal Makeup", img: "/assets/bridal.jpg" },
+  { id: 2, title: "Party & Occasion Makeup", img: "/assets/ocassional.png" },
+  { id: 3, title: "Hair Styling & Hair Spa", img: "/assets/hair.jpg" },
+  { id: 4, title: "Manicure & Pedicure", img: "/assets/manicure.jpg" },
+  { id: 5, title: "Skincare & Facials", img: "/assets/skincare.png" },
+  { id: 6, title: "Waxing & Threading", img: "/assets/threading.jpg" },
 ];
 
 const Services = () => {

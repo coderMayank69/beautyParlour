@@ -1,4 +1,4 @@
-import { assets } from '../assets/assets.js';
+import { assets } from '../../public/assets/assets.js';
 
 const StarRating = ({rating=4}) => {
   return (
