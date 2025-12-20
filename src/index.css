@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
+
+@import "tailwindcss";
+
+:root {
+  --color-primary: #2563EB;
+  --color-secondary: #FBBF24;
+}
+
+*{
+  font-family: Outfit;
+}
+
+.font-playfair{
+  font-family: Playfair !important;
+}
+
+/* Reusable section spacing for components */
+.section {
+  @apply py-16 md:py-20 lg:py-24 px-6 md:px-16 lg:px-24 xl:px-32;
+}
+
+/* Section with less vertical padding */
+.section-sm {
+  @apply py-10 md:py-14 lg:py-16 px-6 md:px-16 lg:px-24 xl:px-32;
+}
