@@ -54,7 +54,7 @@ const Hero = () => {
           </div>
 
           {/* Buttons */}
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-4 mb-12">
             <button className="flex items-center gap-3 px-8 py-4 rounded-full text-white font-medium
               bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700
               hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-300">
@@ -85,7 +85,8 @@ const Hero = () => {
             <img
               src="/assets/hero.png"
               alt="Beauty Salon Experience"
-              className="relative w-full max-w-none md:max-w-lg lg:max-w-xl xl:max-w-2xl object-contain 
+              className="relative w-full hidden lg:block
+ max-w-none md:max-w-lg lg:max-w-xl xl:max-w-2xl object-contain 
                 transition-transform duration-700 ease-out group-hover:scale-105 drop-shadow-2xl"
             />
 
@@ -115,7 +116,7 @@ const Hero = () => {
       </section>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 animate-bounce">
+      <div className=" mt-5 absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 animate-bounce">
         <span className="text-white/60 text-sm">Scroll Down</span>
         <svg className="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />

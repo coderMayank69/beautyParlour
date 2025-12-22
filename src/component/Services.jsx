@@ -17,7 +17,7 @@ const Services = () => {
         <Title title="Our Beauty Services" subTitle="Carefully crafted treatments to enhance your natural beauty" align="center" font="font-playfair text-6xl md:text-6xl" />
 
 
-        <div className=" max-w-6xl mx-auto p-6 mt-20 text-center">
+        <div className="max-w-6xl mx-auto p-6 mt-20 text-center">
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
             {items.map((item) => (
               <div
@@ -47,15 +47,11 @@ const Services = () => {
                 </div>
 
                 {/* Text Content */}
-                <div className="p-5">
-                  <h3 className="text-lg md:text-xl font-semibold text-slate-800 tracking-wide 
+                <div className="p-3">
+                  <h3 className="text-xs md:text-xl font-semibold text-slate-800 tracking-wide 
                     transition-colors duration-300 group-hover:text-purple-600">
                     {item.title}
-                  </h3>
-                  <p className="text-sm text-gray-500 mt-2 opacity-0 group-hover:opacity-100 
-                    transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
-                    Explore service →
-                  </p>
+                </h3>
                 </div>
 
                 {/* Bottom Accent Line */}
