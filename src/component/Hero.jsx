@@ -87,7 +87,7 @@ const Hero = () => {
               blur-2xl group-hover:opacity-50 transition-opacity duration-700" />
             
             <img
-              src="/assets/hero.png"
+              src="/assets/hero.webp"
               alt="Beauty Salon Experience"
               className="relative w-full hidden lg:block
  max-w-none md:max-w-lg lg:max-w-xl xl:max-w-2xl object-contain 
