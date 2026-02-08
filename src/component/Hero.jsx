@@ -3,9 +3,13 @@
 const Hero = () => {
   return (
     <div
-      className="relative flex flex-col items-start justify-center
-      bg-[url('/assets/background.png')] bg-no-repeat bg-cover bg-top
-      min-h-screen overflow-hidden"
+      className="relative flex flex-col items-start justify-center min-h-screen overflow-hidden"
+      style={{
+        backgroundImage: `url('/assets/background.webp'), url('/assets/background.png')`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        backgroundPosition: 'top',
+      }}
     >
       {/* Gradient Overlays */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-10" />
