@@ -23,7 +23,7 @@ const Navbar = () => {
     return (
         <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 
             ${isScrolled 
-                ? "bg-black/90 backdrop-blur-xl shadow-lg shadow-purple-500/5 py-3" 
+                ? "bg-gray-200 backdrop-blur-xl shadow-lg shadow-purple-500/5 py-3" 
                 : "bg-black/20 backdrop-blur-sm py-5"}`}
         >
             <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between">
@@ -87,7 +87,7 @@ const Navbar = () => {
                 <button 
                     onClick={() => setIsMenuOpen(!isMenuOpen)} 
                     className={`lg:hidden p-2 rounded-lg transition-colors duration-300
-                        ${isScrolled ? "text-gray-800 hover:bg-gray-100" : "text-white hover:bg-white/10"}`}
+                        ${isScrolled ? "text-gray-100 hover:bg-gray-100" : "text-white hover:bg-white/10"}`}
                 >
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         {isMenuOpen ? (
@@ -102,12 +102,12 @@ const Navbar = () => {
             {/* Mobile Menu */}
             <div className={`lg:hidden fixed inset-0 z-50 transition-all duration-500 
                 ${isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`}
-                style={isMenuOpen ? { background: 'black/70' } : {}}
+                style={isMenuOpen ? { background: 'white' } : {}}
             >
                 {/* Backdrop */}
                 <div 
                     className="absolute inset-0" 
-                    style={{ background: isMenuOpen ? 'grey/50' : 'transparent' }}
+                    style={{ background: isMenuOpen ? 'white' : 'transparent' }}
                     onClick={() => setIsMenuOpen(false)} 
                 />
                 
