@@ -23,7 +23,7 @@ const Navbar = () => {
     return (
         <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 
             ${isScrolled 
-                ? "bg-white/90 backdrop-blur-xl shadow-lg shadow-purple-500/5 py-3" 
+                ? "bg-black/90 backdrop-blur-xl shadow-lg shadow-purple-500/5 py-3" 
                 : "bg-black/20 backdrop-blur-sm py-5"}`}
         >
             <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between">
@@ -102,15 +102,17 @@ const Navbar = () => {
             {/* Mobile Menu */}
             <div className={`lg:hidden fixed inset-0 z-50 transition-all duration-500 
                 ${isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`}
+                style={isMenuOpen ? { background: 'black/70' } : {}}
             >
                 {/* Backdrop */}
                 <div 
-                    className="absolute inset-0 bg-black/60 backdrop-blur-sm" 
+                    className="absolute inset-0" 
+                    style={{ background: isMenuOpen ? 'grey/50' : 'transparent' }}
                     onClick={() => setIsMenuOpen(false)} 
                 />
                 
                 {/* Menu Panel */}
-                <div className={`absolute right-0 top-0 h-full w-80 max-w-full bg-white shadow-2xl transition-transform duration-500
+                <div className={`absolute right-0 top-0 h-full w-80 max-w-full bg-transparent shadow-2xl transition-transform duration-500
                     ${isMenuOpen ? "translate-x-0" : "translate-x-full"}`}
                 >
                     {/* Menu Header */}
@@ -120,7 +122,7 @@ const Navbar = () => {
                         </span>
                         <button 
                             onClick={() => setIsMenuOpen(false)}
-                            className="p-2 rounded-lg text-gray-500 hover:bg-gray-100 transition-colors"
+                            className="p-2 rounded-lg text-gray-500 bg-gray-100 transition-colors"
                         >
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
@@ -135,7 +137,7 @@ const Navbar = () => {
                                 key={i} 
                                 href={link.path} 
                                 onClick={() => setIsMenuOpen(false)}
-                                className="block px-4 py-3 rounded-xl text-gray-700 font-medium hover:bg-purple-50 hover:text-purple-600 transition-colors"
+                                className="block px-4 py-3 rounded-xl text-black font-medium bg-purple-50 hover:text-purple-600 transition-colors"
                             >
                                 {link.name}
                             </a>
