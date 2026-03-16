@@ -86,12 +86,15 @@ const Hero = () => {
             <div className="absolute -inset-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full opacity-30 
               blur-2xl group-hover:opacity-50 transition-opacity duration-700" />
             
-            <img
-              src="/assets/hero.webp"
-              alt="Beauty Salon Experience"
-              className="relative w-full hidden lg:block
- max-w-none md:max-w-lg lg:max-w-xl xl:max-w-2xl object-contain 
-                transition-transform duration-700 ease-out group-hover:scale-105 drop-shadow-2xl"
+            <img max-w-none md:max-w-lg lg:max-w-xl xl:max-w-2xl object-contain 
+                transition-transform duration-700 ease-out group-hover:scale-105 drop-shadow-2xl
+                src="/assets/hero.webp"
+                alt="Beauty Salon Experience"
+                className="relative w-full hidden lg:block max-w-none md:max-w-lg lg:max-w-xl xl:max-w-2xl object-contain transition-transform duration-700 ease-out group-hover:scale-105 drop-shadow-2xl"
+                loading="lazy"
+                decoding="async"
+                fetchpriority="high"
+                style={{ imageRendering: 'auto' }}
             />
 
             {/* Floating Card */}
