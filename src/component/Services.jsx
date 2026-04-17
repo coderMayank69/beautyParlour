@@ -1,29 +1,63 @@
-import React from 'react'
-import Title from './Title.jsx'
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Title from './Title.jsx';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const items = [
-  { id: 1, title: "Bridal Makeup", img: "/assets/bridal.jpg" },
-  { id: 2, title: "Party & Occasion Makeup", img: "/assets/ocassional.png" },
-  { id: 3, title: "Hair Styling & Hair Spa", img: "/assets/hair.jpg" },
-  { id: 4, title: "Manicure & Pedicure", img: "/assets/manicure.jpg" },
-  { id: 5, title: "Skincare & Facials", img: "/assets/skincare.png" },
-  { id: 6, title: "Waxing & Threading", img: "/assets/threading.jpg" },
+  { id: 1, title: "Bridal Makeup", img: "/assets/bridal.webp" },
+  { id: 2, title: "Party & Occasion Makeup", img: "/assets/ocassional.webp" },
+  { id: 3, title: "Hair Styling & Hair Spa", img: "/assets/hair.webp" },
+  { id: 4, title: "Manicure & Pedicure", img: "/assets/manicure.webp" },
+  { id: 5, title: "Skincare & Facials", img: "/assets/skincare.webp" },
+  { id: 6, title: "Waxing & Threading", img: "/assets/threading.webp" },
 ];
 
 const Services = () => {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Cards fan in with stagger
+      gsap.fromTo('.service-card',
+        { opacity: 0, y: 50, scale: 0.92 },
+        {
+          opacity: 1, y: 0, scale: 1,
+          duration: 0.6, stagger: 0.1, ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.services-grid',
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          }
+        }
+      );
+
+      // CTA button
+      gsap.fromTo('.services-cta',
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1, y: 0, duration: 0.6, ease: 'power2.out',
+          scrollTrigger: { trigger: '.services-cta', start: 'top 95%', toggleActions: 'play none none none' }
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <>
-      <div className='flex flex-col justify-center items-center section text-stone-800 bg-gray-100 text-center'>
+      <div ref={sectionRef} id="services" className='flex flex-col justify-center items-center section text-stone-800 bg-gray-100 text-center'>
         <Title title="Our Beauty Services" subTitle="Carefully crafted treatments to enhance your natural beauty" align="center" font="font-playfair text-6xl md:text-6xl" />
 
-
         <div className="max-w-6xl mx-auto p-6 mt-20 text-center">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+          <div className="services-grid grid grid-cols-2 md:grid-cols-3 gap-8">
             {items.map((item) => (
               <div
                 key={item.id}
-                className="group relative bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer 
-                hover:shadow-2xl hover:shadow-purple-200 hover:-translate-y-2 transition-all duration-500"
+                className="service-card group relative bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer 
+                hover:shadow-2xl hover:shadow-purple-200 hover:-translate-y-2 transition-all duration-500 opacity-0"
               >
                 {/* Image Container with Overlay */}
                 <div className="relative h-52 md:h-60 lg:h-72 overflow-hidden">
@@ -31,12 +65,11 @@ const Services = () => {
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     src={item.img}
                     alt={item.title}
+                    loading="lazy"
                   />
-                  {/* Gradient Overlay on Hover */}
                   <div className="absolute inset-0 bg-gradient-to-t from-purple-900/60 via-transparent to-transparent 
                     opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
-                  {/* Icon Badge */}
                   <div className="absolute top-4 right-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full 
                     flex items-center justify-center opacity-0 group-hover:opacity-100 
                     transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
@@ -46,24 +79,22 @@ const Services = () => {
                   </div>
                 </div>
 
-                {/* Text Content */}
                 <div className="p-3">
                   <h3 className="text-xs md:text-xl font-semibold text-slate-800 tracking-wide 
                     transition-colors duration-300 group-hover:text-purple-600">
                     {item.title}
-                </h3>
+                  </h3>
                 </div>
 
-                {/* Bottom Accent Line */}
                 <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-indigo-500 
                   transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
               </div>
             ))}
           </div>
 
-          <button className="mx-auto flex items-center gap-3 mt-14 px-10 py-4 rounded-full text-white font-medium
+          <button className="services-cta mx-auto flex items-center gap-3 mt-14 px-10 py-4 rounded-full text-white font-medium
             bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700
-            hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-300 transition-all duration-300">
+            hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-300 transition-all duration-300 opacity-0">
             <span>View all services</span>
             <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -74,7 +105,7 @@ const Services = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Services
+export default Services;

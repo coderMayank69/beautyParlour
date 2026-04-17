@@ -1,11 +1,63 @@
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Entrance: badge → h1 → p → stats → buttons → scroll-indicator
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+      tl.fromTo('.hero-badge',
+        { opacity: 0, y: -20 },
+        { opacity: 1, y: 0, duration: 0.6 }
+      )
+        .fromTo('.hero-title',
+          { opacity: 0, y: 40 },
+          { opacity: 1, y: 0, duration: 0.8 },
+          '-=0.3'
+        )
+        .fromTo('.hero-desc',
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.7 },
+          '-=0.4'
+        )
+        .fromTo('.hero-stat',
+          { opacity: 0, y: 20, scale: 0.9 },
+          { opacity: 1, y: 0, scale: 1, stagger: 0.1, duration: 0.5 },
+          '-=0.3'
+        )
+        .fromTo('.hero-btns',
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.6 },
+          '-=0.2'
+        )
+        .fromTo('.hero-image',
+          { opacity: 0, x: 60 },
+          { opacity: 1, x: 0, duration: 1, ease: 'power2.out' },
+          '-=0.8'
+        )
+        .fromTo('.hero-scroll',
+          { opacity: 0 },
+          { opacity: 1, duration: 0.5 },
+          '-=0.3'
+        );
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <div
+      ref={containerRef}
+      id="home"
       className="relative flex flex-col items-start justify-center min-h-screen overflow-hidden"
       style={{
-        backgroundImage: `url('/assets/background.webp'), url('/assets/background.png')`,
+        backgroundImage: "url('/assets/background.webp')",
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: 'top',
@@ -21,23 +73,23 @@ const Hero = () => {
 
       {/* Content */}
       <section className="mt-20 relative z-20 flex flex-col md:flex-row w-full items-center min-h-screen">
-        {/* Text Content - Added pt-28 to account for fixed navbar */}
+        {/* Text Content */}
         <div className="md:w-1/2 mb-20 w-full px-6 md:px-16 lg:px-24 xl:px-32 text-white pt-28 md:pt-32">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full 
-            border border-white/20 mb-6 animate-fade-in">
+          <div className="hero-badge inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full 
+            border border-white/20 mb-6 opacity-0">
             <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
             <span className="text-sm text-white/90">Now accepting appointments</span>
           </div>
 
-          <h1 className="font-playfair text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight font-extrabold max-w-2xl drop-shadow-lg">
+          <h1 className="hero-title font-playfair text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight font-extrabold max-w-2xl drop-shadow-lg opacity-0">
             Your Beauty,{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-pink-300">
               Our Expertise
             </span>
           </h1>
 
-          <p className="max-w-xl mt-6 text-lg md:text-xl text-white/80 leading-relaxed">
+          <p className="hero-desc max-w-xl mt-6 text-lg md:text-xl text-white/80 leading-relaxed opacity-0">
             Indulge in luxury beauty treatments tailored just for you. From
             stunning hair makeovers to rejuvenating facials and flawless bridal
             looks—experience the art of beauty with our expert stylists.
@@ -50,7 +102,7 @@ const Hero = () => {
               { number: "5K+", label: "Happy Clients" },
               { number: "50+", label: "Expert Stylists" },
             ].map((stat, index) => (
-              <div key={index} className="text-center">
+              <div key={index} className="hero-stat text-center opacity-0">
                 <p className="text-3xl md:text-4xl font-bold text-white">{stat.number}</p>
                 <p className="text-sm text-white/60">{stat.label}</p>
               </div>
@@ -58,7 +110,7 @@ const Hero = () => {
           </div>
 
           {/* Buttons */}
-          <div className="flex flex-wrap gap-4 mb-12">
+          <div className="hero-btns flex flex-wrap gap-4 mb-12 opacity-0">
             <button className="flex items-center gap-3 px-8 py-4 rounded-full text-white font-medium
               bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700
               hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-300">
@@ -79,22 +131,20 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Hero Image - Positioned at bottom right */}
+        {/* Hero Image */}
         <div className="absolute bottom-0 right-0 w-full md:w-[55%] lg:w-[50%] flex justify-end items-end">
-          <div className="relative group">
+          <div className="relative group hero-image opacity-0">
             {/* Glow Effect */}
             <div className="absolute -inset-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full opacity-30 
               blur-2xl group-hover:opacity-50 transition-opacity duration-700" />
             
-            <img max-w-none md:max-w-lg lg:max-w-xl xl:max-w-2xl object-contain 
-                transition-transform duration-700 ease-out group-hover:scale-105 drop-shadow-2xl
-                src="/assets/hero.webp"
-                alt="Beauty Salon Experience"
-                className="relative w-full hidden lg:block max-w-none md:max-w-lg lg:max-w-xl xl:max-w-2xl object-contain transition-transform duration-700 ease-out group-hover:scale-105 drop-shadow-2xl"
-                loading="lazy"
-                decoding="async"
-                fetchpriority="high"
-                style={{ imageRendering: 'auto' }}
+            <img
+              src="/assets/hero.webp"
+              alt="Beauty Salon Experience"
+              className="relative w-full hidden lg:block max-w-none md:max-w-lg lg:max-w-xl xl:max-w-2xl object-contain transition-transform duration-700 ease-out group-hover:scale-105 drop-shadow-2xl"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
             />
 
             {/* Floating Card */}
@@ -123,7 +173,7 @@ const Hero = () => {
       </section>
 
       {/* Scroll Indicator */}
-      <div className=" mt-5 absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 animate-bounce">
+      <div className="hero-scroll mt-5 absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 animate-bounce opacity-0">
         <span className="text-white/60 text-sm">Scroll Down</span>
         <svg className="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />

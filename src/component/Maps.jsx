@@ -25,7 +25,7 @@ const Maps = () => {
     ];
 
     return (
-        <section className="relative py-20 bg-gray-100 overflow-hidden">
+        <section id="contact" className="relative py-20 bg-gray-100 overflow-hidden">
             {/* Decorative Elements */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-purple-200/20 rounded-full blur-3xl" />
             <div className="absolute bottom-0 left-0 w-72 h-72 bg-indigo-200/20 rounded-full blur-3xl" />

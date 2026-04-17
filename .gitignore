@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Image optimization temp folders
+scripts/tmp_assets/
+scripts/out_assets/
+*.tmp.webp
